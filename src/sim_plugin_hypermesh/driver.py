@@ -356,3 +356,12 @@ class HyperMeshDriver:
             raise RuntimeError("No HyperMesh executable found.")
 
         return run_subprocess(cmd, script=script, solver=self.name)
+
+    def launch(self, **kwargs) -> dict:
+        raise NotImplementedError("HyperMesh driver does not support persistent sessions")
+
+    def run(self, code: str, label: str = "") -> dict:
+        raise NotImplementedError("HyperMesh driver does not support persistent sessions")
+
+    def disconnect(self) -> dict:
+        return {"ok": True, "disconnected": True}

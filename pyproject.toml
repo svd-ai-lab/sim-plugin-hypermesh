@@ -21,15 +21,16 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
 ]
 dependencies = [
-    # sim-runtime brings the runtime contract (sim.driver, sim.runner,
+    # sim-cli-core brings the runtime contract (sim.driver, sim.runner,
     # sim.compat). HyperMesh's `hm` Python API ships inside the HyperWorks
     # Desktop installation and is not on PyPI — see LICENSE-NOTICE.md.
-    "sim-runtime @ git+https://github.com/svd-ai-lab/sim-cli@main",
+    "sim-cli-core>=0.3",
 ]
 
 [project.optional-dependencies]
 test = [
     "pytest>=7",
+    "build>=1.0",
 ]
 
 [project.entry-points."sim.drivers"]
@@ -38,15 +39,18 @@ hypermesh = "sim_plugin_hypermesh:HyperMeshDriver"
 [project.entry-points."sim.skills"]
 hypermesh = "sim_plugin_hypermesh:skills_dir"
 
+[project.entry-points."sim.plugins"]
+hypermesh = "sim_plugin_hypermesh:plugin_info"
+
 [project.urls]
 Homepage = "https://github.com/svd-ai-lab/sim-plugin-hypermesh"
 Issues = "https://github.com/svd-ai-lab/sim-plugin-hypermesh/issues"
 
-[tool.hatch.metadata]
-# Required because `sim-runtime` is pinned to a git+https URL — sim-cli is
-# distributed via GitHub, not PyPI. See sim-proj memory: plugin distribution
-# is GitHub-only.
-allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sim_plugin_hypermesh"]
+
+[tool.pytest.ini_options]
+markers = [
+  "integration: tests that build wheels or touch external tooling",
+]

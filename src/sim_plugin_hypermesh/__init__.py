@@ -10,4 +10,13 @@ from .driver import HyperMeshDriver
 
 skills_dir = files(__name__) / "_skills"
 
-__all__ = ["HyperMeshDriver", "skills_dir"]
+
+plugin_info = {
+    "name": "hypermesh",
+    "summary": "Driver plugin for sim-cli.",
+    "homepage": "https://github.com/svd-ai-lab/sim-plugin-hypermesh",
+    "license_class": "commercial",
+    "solver_name": "hypermesh",
+}
+
+__all__ = ["HyperMeshDriver", "skills_dir", "plugin_info"]
