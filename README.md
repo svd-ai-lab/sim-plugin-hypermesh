@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **This repository has moved.** `sim-plugin-hypermesh` is now developed in [svd-ai-lab/sim-cli](https://github.com/svd-ai-lab/sim-cli/tree/main/plugins/hypermesh) under `plugins/hypermesh`. This repository is archived and read-only; please open issues and pull requests in sim-cli.
+>
+> Install: `uv add sim-cli-core "sim-plugin-hypermesh @ git+https://github.com/svd-ai-lab/sim-cli.git#subdirectory=plugins/hypermesh"`
+
 # sim-plugin-hypermesh
 
 Private HyperMesh plugin for `sim-cli`.
